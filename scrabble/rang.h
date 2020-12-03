@@ -87,27 +87,9 @@ enum class bg {
     reset = 49
 };
 
-enum class fgB {
-    black = 90,
-    red = 91,
-    green = 92,
-    yellow = 93,
-    blue = 94,
-    magenta = 95,
-    cyan = 96,
-    gray = 97
-};
+enum class fgB { black = 90, red = 91, green = 92, yellow = 93, blue = 94, magenta = 95, cyan = 96, gray = 97 };
 
-enum class bgB {
-    black = 100,
-    red = 101,
-    green = 102,
-    yellow = 103,
-    blue = 104,
-    magenta = 105,
-    cyan = 106,
-    gray = 107
-};
+enum class bgB { black = 100, red = 101, green = 102, yellow = 103, blue = 104, magenta = 105, cyan = 106, gray = 107 };
 
 enum class control {  // Behaviour of rang function calls
     Off = 0,          // toggle off rang style/color calls
@@ -140,22 +122,20 @@ inline bool supportsColor() noexcept {
 #if defined(OS_LINUX) || defined(OS_MAC)
 
     static const bool result = [] {
-        const char* Terms[] = {
-            "ansi",
-            "color",
-            "console",
-            "cygwin",
-            "gnome",
-            "konsole",
-            "kterm",
-            "linux",
-            "msys",
-            "putty",
-            "rxvt",
-            "screen",
-            "vt100",
-            "xterm"
-        };
+        const char* Terms[] = {"ansi",
+                               "color",
+                               "console",
+                               "cygwin",
+                               "gnome",
+                               "konsole",
+                               "kterm",
+                               "linux",
+                               "msys",
+                               "putty",
+                               "rxvt",
+                               "screen",
+                               "vt100",
+                               "xterm"};
 
         const char* env_p = std::getenv("TERM");
         if (env_p == nullptr) {
@@ -472,13 +452,9 @@ inline rang_implementation::enableStd<T> operator<<(std::ostream& os, const T va
     }
 }
 
-inline void setWinTermMode(const rang::winTerm value) noexcept {
-    rang_implementation::winTermMode() = value;
-}
+inline void setWinTermMode(const rang::winTerm value) noexcept { rang_implementation::winTermMode() = value; }
 
-inline void setControlMode(const control value) noexcept {
-    rang_implementation::controlMode() = value;
-}
+inline void setControlMode(const control value) noexcept { rang_implementation::controlMode() = value; }
 
 }  // namespace rang
 

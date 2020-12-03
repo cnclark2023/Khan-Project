@@ -1,11 +1,11 @@
 #include "tile_bag.h"
-#include "tile_collection.h"
+
 #include "exceptions.h"
+#include "tile_collection.h"
 #include <fstream>
 #include <iostream>
 
 using namespace std;
-
 
 TileBag TileBag::read(std::string file_path, uint32_t seed) {
     TileBag bag(seed);
@@ -49,6 +49,4 @@ std::vector<TileKind> TileBag::remove_random_tiles(size_t count) {
     return result;
 }
 
-const unordered_map<char, TileKind>& TileBag::get_kinds() const {
-    return this->kinds;
-}
+const unordered_map<char, TileKind>& TileBag::get_kinds() const { return this->kinds; }

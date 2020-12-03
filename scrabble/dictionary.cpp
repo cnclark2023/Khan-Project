@@ -1,12 +1,12 @@
 #include "dictionary.h"
+
 #include "exceptions.h"
-#include <fstream>
-#include <cctype>
 #include <algorithm>
+#include <cctype>
+#include <fstream>
 #include <iostream>
 
 using namespace std;
-
 
 string lower(string str) {
     transform(str.cbegin(), str.cend(), str.begin(), ::tolower);
@@ -23,10 +23,11 @@ Dictionary Dictionary::read(const std::string& file_path) {
     Dictionary dictionary;
 
     // TODO: complete this. Words in dictionary should all be lowercase.
+    while ((file >> word)) {
+        dictionary.words.insert(word);
+    }
 
     return dictionary;
 }
 
-bool Dictionary::is_word(const std::string& word) const {
-    return this->words.find(word) != this->words.end();
-}
+bool Dictionary::is_word(const std::string& word) const { return this->words.find(word) != this->words.end(); }

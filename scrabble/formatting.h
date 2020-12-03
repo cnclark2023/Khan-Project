@@ -5,7 +5,6 @@
 #include <ostream>
 #include <string>
 
-
 std::string repeat(const char* str, size_t times);
 void print_horizontal(size_t columns, const char* left, const char* joint, const char* right, std::ostream& out);
 

@@ -1,12 +1,11 @@
 #ifndef SCRABBLE_CONFIG
 #define SCRABBLE_CONFIG
 
-#include <string>
 #include <cstdint>
-
+#include <string>
 
 class ScrabbleConfig {
-public:
+  public:
     uint32_t seed;
     size_t hand_size;
     size_t minimum_word_length;

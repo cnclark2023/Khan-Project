@@ -1,21 +1,18 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "move.h"
 #include "board.h"
 #include "dictionary.h"
+#include "move.h"
 #include "tile_collection.h"
 #include <string>
 #include <vector>
 
-
 class Player {
-public:
-    Player(const std::string& name, size_t hand_size) // Used for testing
-        : name(name)
-        , hand_size(hand_size)
-        , points(0) {}
-    virtual ~Player() {};
+  public:
+    Player(const std::string& name, size_t hand_size)  // Used for testing
+            : name(name), hand_size(hand_size), points(0) {}
+    virtual ~Player(){};
 
     // Adds points to player's score
     void add_points(size_t points);
@@ -47,10 +44,11 @@ public:
 
     size_t get_hand_size() const;
 
-protected:
+  protected:
     // TODO: add any protected data members or functions here
+    TileCollection tiles;
 
-private:
+  private:
     std::string name;
     size_t hand_size;
     size_t points;

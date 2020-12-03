@@ -29,7 +29,6 @@ TEST_F(PlaceTest, place_empty_board_all_1_pts) {
 	t.push_back(TileKind('O', 1));
 	t.push_back(TileKind('O', 1));
 	t.push_back(TileKind('D', 1));
-
 	Move m = Move(t, 7, 7, Direction::ACROSS);
 	PlaceResult result = b.place(m);
 	EXPECT_EQ(result.points, 4);
@@ -381,7 +380,7 @@ TEST_F(PlaceTest, place_word_make_two) {
 	Move m4 = Move(t4, 10, 7, Direction::ACROSS);
 	PlaceResult result = b.place(m4);
 
-	//b.print(std::cout);
+	b.print(std::cout);
 	
 	// HIDE + ENTRY = 10
 	EXPECT_EQ(result.points, 9);
@@ -438,12 +437,12 @@ TEST_F(PlaceTest, place_word_sharing_lose_mult_use_other) {
 
 TEST_F(PlaceTest, place_word_sharing_lose_2_mult_use_other_2) {
 	Board b = Board::read("config/board6.txt");
-
 	vector<TileKind> t1;
 	t1.push_back(TileKind('H', 1));
 	t1.push_back(TileKind('I', 1));
 	Move m1 = Move(t1, 7, 7, Direction::DOWN);
 	b.place(m1);
+
 
 	vector<TileKind> t2;
 	t2.push_back(TileKind('E', 1));
@@ -455,7 +454,7 @@ TEST_F(PlaceTest, place_word_sharing_lose_2_mult_use_other_2) {
 	Move m2 = Move(t2, 7, 8, Direction::DOWN);
 	PlaceResult result = b.place(m2);
 
-	//b.print(std::cout);
+//	b.print(std::cout);
 
 	// (1+1+1+1), should get points for previously places h
 	EXPECT_EQ(result.points, 24+6+4);

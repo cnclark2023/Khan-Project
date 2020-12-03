@@ -1,16 +1,15 @@
 #include "board_square.h"
 
+bool BoardSquare::has_tile() const { return this->tile; }
 
-bool BoardSquare::has_tile() const {
-    return this->tile;
-}
-
-TileKind BoardSquare::get_tile_kind() const {
-    return this->tile_kind;
-}
+TileKind BoardSquare::get_tile_kind() const { return this->tile_kind; }
 
 void BoardSquare::set_tile_kind(TileKind kind) {
-    this->tile = true;
+    if (kind.letter == '\0') {
+        this->tile = false;
+    } else {
+        this->tile = true;
+    }
     this->tile_kind = kind;
 }
 

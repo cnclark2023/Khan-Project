@@ -1,17 +1,16 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include "tile_kind.h"
 #include "board_square.h"
 #include "move.h"
 #include "place_result.h"
+#include "tile_kind.h"
+#include <ostream>
 #include <string>
 #include <vector>
-#include <ostream>
-
 
 class Board {
-public:
+  public:
     size_t rows;
     size_t columns;
 
@@ -33,15 +32,9 @@ public:
 
     size_t get_move_index() const;
 
-    /*
-    The goal of test_place() is to check what would happen if a given Move was executed on the board. It should not actually modify the board in any way. It should fill in a PlaceResult with, quoting the assignment, "whether the move is valid, what words would be generated, how many points the move would be worth... or if not valid, what error message to display"
-
-    So, first and foremost, test_place() should determine if the given move is valid to execute on this board. If it is not valid, then return a PlaceResult with valid set to false, and set the error field to a human-readable error message that shows the user what they did wrong (there are no specific requirements for this error message as long as it describes the error).
-    On the other hand, if the move is valid, then test_place() should set valid to true and the list of all created words should be returned in the words field of the PlaceResult. It should also total up all points scored by the move and return those in the PlaceResult's points field (see the Scoring section of the assignment).
-
-    NOTE: test_place() does not (and can't) check if the words formed are actually in the dictionary. Checking if words are valid is the responsibility of the caller of test_place()!
-    */
-
+    // Test_place should verify that the move given as an argument can be placed on the board
+    // It should return a valid PlaceResult object with appropriate words if so
+    // and an invalid PlaceResult object with error message otherwise.
     PlaceResult test_place(const Move& move) const;
 
     // If the move given is valid and can be placed on the board, this method
@@ -57,13 +50,11 @@ public:
 
     void print(std::ostream& out) const;
 
-protected:
+  protected:
     Board(size_t rows, size_t columns, size_t starting_row, size_t starting_column)
-        : rows(rows)
-        , columns(columns)
-        , start(starting_row - 1, starting_column - 1) {}
+            : rows(rows), columns(columns), start(starting_row - 1, starting_column - 1) {}
 
-private:
+  private:
     BoardSquare& at(const Position& position);
     const BoardSquare& at(const Position& position) const;
 

@@ -1,10 +1,10 @@
 #include "scrabble_config.h"
+
 #include "exceptions.h"
-#include <fstream>
 #include <cctype>
+#include <fstream>
 
 using namespace std;
-
 
 enum class ParserState {
     LOOKING_FOR_KEY,    // not inside any structures at the moment, waiting for a key or a comment character

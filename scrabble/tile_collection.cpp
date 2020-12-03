@@ -1,12 +1,10 @@
 #include "tile_collection.h"
+
 #include <stdexcept>
 
 using namespace std;
 
-
-void TileCollection::add_tile(TileKind kind) {
-    this->add_tiles(kind, 1);
-}
+void TileCollection::add_tile(TileKind kind) { this->add_tiles(kind, 1); }
 
 void TileCollection::add_tiles(TileKind kind, size_t n) {
     TileMap::iterator index = this->tiles.find(kind);
@@ -17,9 +15,7 @@ void TileCollection::add_tiles(TileKind kind, size_t n) {
     }
 }
 
-void TileCollection::remove_tile(TileKind kind) {
-    this->remove_tiles(kind, 1);
-}
+void TileCollection::remove_tile(TileKind kind) { this->remove_tiles(kind, 1); }
 
 void TileCollection::remove_tiles(TileKind kind, size_t n) {
     if (n == 0)
@@ -46,7 +42,7 @@ TileKind TileCollection::lookup_tile(char letter) const {
 }
 
 size_t TileCollection::count_tiles() const {
-    size_t count {0};
+    size_t count{0};
     for (TileMap::const_iterator it = this->tiles.cbegin(); it != this->tiles.cend(); ++it) {
         count += it->second;
     }
@@ -70,9 +66,9 @@ unsigned int TileCollection::total_points() const {
     return sum;
 }
 
-TileCollection::const_iterator::self_type TileCollection::const_iterator::operator++(){
+TileCollection::const_iterator::self_type TileCollection::const_iterator::operator++() {
     repeat_count++;
-    if (repeat_count == map_itr->second){
+    if (repeat_count == map_itr->second) {
         map_itr++;
         repeat_count = 0;
     }
@@ -81,17 +77,13 @@ TileCollection::const_iterator::self_type TileCollection::const_iterator::operat
     return *this;
 }
 
-TileCollection::const_iterator::self_type TileCollection::const_iterator::operator++(int junk){
-	(void)junk;  // Suppress unused variable warning.
+TileCollection::const_iterator::self_type TileCollection::const_iterator::operator++(int junk) {
+    (void)junk;  // Suppress unused variable warning.
     self_type i = *this;
     operator++();
     return i;
 }
 
-TileCollection::const_iterator TileCollection::cbegin() const {
-    return const_iterator(tiles.cbegin());
-}
+TileCollection::const_iterator TileCollection::cbegin() const { return const_iterator(tiles.cbegin()); }
 
-TileCollection::const_iterator TileCollection::cend() const {
-    return const_iterator(tiles.cend());
-}
+TileCollection::const_iterator TileCollection::cend() const { return const_iterator(tiles.cend()); }

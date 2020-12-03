@@ -7,7 +7,8 @@ This is game is to be played between 1-8 human players. It will be played throug
 Make Instructions:
 Note: GTest should be configured
 1)Type "make" in terminal
-2) Type "cat input/example.txt | ./scrabble <configuration-file-name>"
+2) Type "./scrabble config/config.txt  < input/example.txt" to display board
+3) Type "./scrabble config/config.txt" for interactive gameplay
 
 Example of Game Play Commands:
 PASS: pass the turn.
